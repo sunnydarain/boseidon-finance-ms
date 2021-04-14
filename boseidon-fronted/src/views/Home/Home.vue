@@ -18,12 +18,16 @@
                 span(slot="title",v-text="s.name") 
   .second-container
     .header-container
-      //- el-button(type="text",icon="el-icon-bell",size="medium",primary)
-      img.head-img(src="../../assets/common/testHead.jpg")
+      .item
+        el-button(type="primary",icon="el-icon-bell",size="small",circle)
       template(v-if="data.isPersonShow")
-        el-button(type="text",icon="el-icon-arrow-up",@click="showPersonal")
+        .headerImgs(@click="showPersonal")
+          img.head-img(src="../../assets/common/testHead.jpg")
+          el-button(type="text",icon="el-icon-arrow-up")
       template(v-else)
-        el-button(type="text",icon="el-icon-arrow-down",@click="showPersonal")
+        .headerImgs(@click="showPersonal")
+          img.head-img(src="../../assets/common/testHead.jpg")
+          el-button(type="text",icon="el-icon-arrow-down")
     .view-container
 </template>
 
@@ -112,10 +116,18 @@ export default defineComponent({
       flex-direction row
       justify-content flex-end
       align-items center
-      .head-img
-        width 40px
-        height 40px
-        border-radius 50%
+      .headerImgs
+        display flex
+        flex-direction row
+        justify-content center
+        align-items center
+        cursor pointer
+        .head-img
+          width 40px
+          height 40px
+          border-radius 50%
+      .item
+        margin-right 10px
     .view-container
       width 100%
       flex 1
