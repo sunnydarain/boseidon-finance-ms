@@ -1,20 +1,22 @@
 <template lang="pug">
 div
-	h1(@click="msgBtn(msg)") {{msg}}
+	h1(@click="btn(msg)") {{msg}}
 </template>
 
 <script lang="ts">
 export default {
   name: "HelloWorld",
   props: {
-    msg: String
+    msg: {
+      type: String
+    }
   },
   methods: {
-    msgBtn(val: any) {
-      console.log("点击事件", val);
+    btn(val: any) {
+      console.log(val);
     }
   }
 };
 </script>
 
-<style lang="stylues" scoped></style>
+<style lang="stylus" scoped></style>
