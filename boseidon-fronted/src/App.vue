@@ -1,6 +1,5 @@
-<template lang="pug">
-#app
-	h1 hello boseidon
+<template>
+  <router-view />
 </template>
 
 <style lang="stylus">
