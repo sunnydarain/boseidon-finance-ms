@@ -1,6 +1,7 @@
 <template lang="pug">
 //- 主页-导航页面
 .container
+  //- 左侧导航
   .first-container
     el-row.logo(type="flex",justify="center",align="middle") 测试LOGO
     el-row
@@ -16,6 +17,7 @@
               el-menu-item(:index="s.index")
                 i.el-icon-location
                 span(slot="title",v-text="s.name") 
+  //- 右侧内容
   .second-container
     .header-container
       .item 
@@ -37,7 +39,9 @@
           .headerImgs(@click="showPersonal")
             img.head-img(src="../../assets/common/testHead.jpg")
             el-button(type="text",icon="el-icon-arrow-down")
+    //- 页面
     .view-container
+      router-view
 </template>
 
 <script lang="ts">
@@ -55,7 +59,7 @@ interface childrenItem {
 }
 
 const menuArray: menuItem[] = [
-  { name: "首页", url: "01", children: [], index: "1" },
+  { name: "首页", url: "/home/homeIndex", children: [], index: "1" },
   { name: "凭证", url: "02", children: [], index: "2" },
   { name: "资金", url: "03", children: [], index: "3" },
   { name: "发票", url: "04", children: [], index: "4" },
