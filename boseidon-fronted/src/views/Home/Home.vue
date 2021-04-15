@@ -18,16 +18,25 @@
                 span(slot="title",v-text="s.name") 
   .second-container
     .header-container
+      .item 
+        .headerImgs(@click="showTools")
+          .fontitle 常用工具
+          template(v-if="data.isToolShow")
+            el-button(type="text",icon="el-icon-arrow-up")
+          template(v-else)
+            el-button(type="text",icon="el-icon-arrow-down")
       .item
-        el-button(type="primary",icon="el-icon-bell",size="small",circle)
+        el-tooltip(content="消息中心",placement="top")
+          i.iconfont.iconbell(style="color:#ccc;font-size:20px")
       template(v-if="data.isPersonShow")
         .headerImgs(@click="showPersonal")
           img.head-img(src="../../assets/common/testHead.jpg")
           el-button(type="text",icon="el-icon-arrow-up")
       template(v-else)
-        .headerImgs(@click="showPersonal")
-          img.head-img(src="../../assets/common/testHead.jpg")
-          el-button(type="text",icon="el-icon-arrow-down")
+        el-tooltip(content="个人中心",placement="top")
+          .headerImgs(@click="showPersonal")
+            img.head-img(src="../../assets/common/testHead.jpg")
+            el-button(type="text",icon="el-icon-arrow-down")
     .view-container
 </template>
 
@@ -65,7 +74,8 @@ export default defineComponent({
   setup() {
     menuArray;
     const data = reactive({
-      isPersonShow: false
+      isPersonShow: false,
+      isToolShow: false
     });
     return { data, menuArray };
   },
@@ -79,6 +89,10 @@ export default defineComponent({
     // 个人设置
     showPersonal() {
       this.data.isPersonShow = !this.data.isPersonShow;
+    },
+    // 常用工具
+    showTools() {
+      this.data.isToolShow = !this.data.isToolShow;
     }
   }
 });
@@ -110,7 +124,7 @@ export default defineComponent({
     .header-container
       width 100%
       height 60px
-      padding 5px 20px
+      padding 5px 30px
       box-sizing border-box
       display flex
       flex-direction row
@@ -126,8 +140,12 @@ export default defineComponent({
           width 40px
           height 40px
           border-radius 50%
+        .fontitle
+          font-size 14px
+          font-weight bold
       .item
-        margin-right 10px
+        margin-right 25px
+        cursor pointer
     .view-container
       width 100%
       flex 1

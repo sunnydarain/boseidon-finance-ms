@@ -1,0 +1,16 @@
+{
+  "id": "2488689",
+  "name": "boseidon_finance",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "13224748",
+      "name": "bell",
+      "font_class": "bell",
+      "unicode": "e889",
+      "unicode_decimal": 59529
+    }
+  ]
+}
