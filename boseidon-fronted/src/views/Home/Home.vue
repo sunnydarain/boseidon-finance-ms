@@ -1,6 +1,7 @@
 <template lang="pug">
 //- 主页-导航页面
 .container
+  //- 左侧导航
   .first-container
     el-row.logo(type="flex",justify="center",align="middle") 测试LOGO
     el-row
@@ -16,14 +17,29 @@
               el-menu-item(:index="s.index" )
                 i.el-icon-location
                 span(slot="title",v-text="s.name") 
+  //- 右侧内容
   .second-container
     .header-container
-      //- el-button(type="text",icon="el-icon-bell",size="medium",primary)
-      img.head-img(src="../../assets/common/testHead.jpg")
+      .item 
+        .headerImgs(@click="showTools")
+          .fontitle 常用工具
+          template(v-if="data.isToolShow")
+            el-button(type="text",icon="el-icon-arrow-up")
+          template(v-else)
+            el-button(type="text",icon="el-icon-arrow-down")
+      .item
+        el-tooltip(content="消息中心",placement="top")
+          i.iconfont.iconbell(style="color:#ccc;font-size:20px")
       template(v-if="data.isPersonShow")
-        el-button(type="text",icon="el-icon-arrow-up",@click="showPersonal")
+        .headerImgs(@click="showPersonal")
+          img.head-img(src="../../assets/common/testHead.jpg")
+          el-button(type="text",icon="el-icon-arrow-up")
       template(v-else)
-        el-button(type="text",icon="el-icon-arrow-down",@click="showPersonal")
+        el-tooltip(content="个人中心",placement="top")
+          .headerImgs(@click="showPersonal")
+            img.head-img(src="../../assets/common/testHead.jpg")
+            el-button(type="text",icon="el-icon-arrow-down")
+    //- 页面
     .view-container
       router-view
 </template>
@@ -44,7 +60,7 @@ interface childrenItem {
 
 const menuArray: menuItem[] = [
   { name: "首页", url: "01", children: [], index: "home" },
-  { name: "凭证", url: "02", children: [], index: "2" },
+  { name: "凭证", url: "02", children: [], index: "proof" },
   { name: "资金", url: "03", children: [], index: "3" },
   { name: "发票", url: "04", children: [], index: "4" },
   { name: "工资", url: "05", children: [], index: "5" },
@@ -62,7 +78,8 @@ export default defineComponent({
   setup() {
     menuArray;
     const data = reactive({
-      isPersonShow: false
+      isPersonShow: false,
+      isToolShow: false
     });
     return { data, menuArray };
   },
@@ -76,6 +93,10 @@ export default defineComponent({
     // 个人设置
     showPersonal() {
       this.data.isPersonShow = !this.data.isPersonShow;
+    },
+    // 常用工具
+    showTools() {
+      this.data.isToolShow = !this.data.isToolShow;
     }
   }
 });
@@ -107,16 +128,28 @@ export default defineComponent({
     .header-container
       width 100%
       height 60px
-      padding 5px 20px
+      padding 5px 30px
       box-sizing border-box
       display flex
       flex-direction row
       justify-content flex-end
       align-items center
-      .head-img
-        width 40px
-        height 40px
-        border-radius 50%
+      .headerImgs
+        display flex
+        flex-direction row
+        justify-content center
+        align-items center
+        cursor pointer
+        .head-img
+          width 40px
+          height 40px
+          border-radius 50%
+        .fontitle
+          font-size 14px
+          font-weight bold
+      .item
+        margin-right 25px
+        cursor pointer
     .view-container
       width 100%
       flex 1
