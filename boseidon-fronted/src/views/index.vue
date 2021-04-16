@@ -19,7 +19,7 @@
   .second-container
     .header-container
       //- el-button(type="text",icon="el-icon-bell",size="medium",primary)
-      img.head-img(src="../../assets/common/testHead.jpg")
+      img.head-img(src="../assets/common/testHead.jpg")
       template(v-if="data.isPersonShow")
         el-button(type="text",icon="el-icon-arrow-up",@click="showPersonal")
       template(v-else)
@@ -44,7 +44,7 @@ interface childrenItem {
 
 const menuArray: menuItem[] = [
   { name: "首页", url: "01", children: [], index: "home" },
-  { name: "凭证", url: "02", children: [], index: "2" },
+  { name: "凭证", url: "02", children: [], index: "proof" },
   { name: "资金", url: "03", children: [], index: "3" },
   { name: "发票", url: "04", children: [], index: "4" },
   { name: "工资", url: "05", children: [], index: "5" },
