@@ -59,7 +59,7 @@ interface childrenItem {
 }
 
 const menuArray: menuItem[] = [
-  { name: "首页", url: "01", children: [], index: "home" },
+  { name: "首页", url: "/main/home", children: [], index: "home" },
   { name: "凭证", url: "02", children: [], index: "proof" },
   { name: "资金", url: "03", children: [], index: "3" },
   { name: "发票", url: "04", children: [], index: "4" },
