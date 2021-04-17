@@ -6,10 +6,10 @@
     el-row.logo(type="flex",justify="center",align="middle") 测试LOGO
     el-row
       el-col(:span="24")
-        el-menu(router default-active="1",@open="handleOpen",@close="handleClose",background-color="#545c64",text-color="#fff",active-text-color="#ffd04b")
+        el-menu(:router="true",:default-active="'/main/home'",@open="handleOpen",@close="handleClose",background-color="#545c64",text-color="#fff",active-text-color="#ffd04b")
           template(v-for="(s,index) in menuArray" :key="index")
             template(v-if="s.children.length > 0")
-              el-submenu(:index="s.url")
+              el-submenu(:index="s.index")
                 template(slot="title")
                   i.el-icon-location
                   span(v-text="s.name")
@@ -59,8 +59,8 @@ interface childrenItem {
 }
 
 const menuArray: menuItem[] = [
-  { name: "首页", url: "/main/home", children: [], index: "home" },
-  { name: "凭证", url: "02", children: [], index: "proof" },
+  { name: "首页", url: "/main/home", children: [], index: "/main/home" },
+  { name: "凭证", url: "/main/proof", children: [], index: "/main/proof" },
   { name: "资金", url: "03", children: [], index: "3" },
   { name: "发票", url: "04", children: [], index: "4" },
   { name: "工资", url: "05", children: [], index: "5" },
@@ -79,7 +79,8 @@ export default defineComponent({
     menuArray;
     const data = reactive({
       isPersonShow: false,
-      isToolShow: false
+      isToolShow: false,
+      activerouter: '',
     });
     return { data, menuArray };
   },
