@@ -6,7 +6,7 @@
     el-row.logo(type="flex",justify="center",align="middle") 测试LOGO
     el-row
       el-col(:span="24")
-        el-menu(:router="true",:default-active="'/main/home'",@open="handleOpen",@close="handleClose",background-color="#545c64",text-color="#fff",active-text-color="#ffd04b")
+        el-menu(:router="true",:default-active="data.activerouter",@open="handleOpen",@close="handleClose",background-color="#545c64",text-color="#fff",active-text-color="#ffd04b")
           template(v-for="(s,index) in menuArray" :key="index")
             template(v-if="s.children.length > 0")
               el-submenu(:index="s.index")
@@ -46,6 +46,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
+import { useRoute, useRouter } from 'vue-router'
 
 interface menuItem {
   name: string;
@@ -80,7 +81,7 @@ export default defineComponent({
     const data = reactive({
       isPersonShow: false,
       isToolShow: false,
-      activerouter: '',
+      activerouter: '/main/home',
     });
     return { data, menuArray };
   },
@@ -98,6 +99,10 @@ export default defineComponent({
     // 常用工具
     showTools() {
       this.data.isToolShow = !this.data.isToolShow;
+    },
+    // 点击切换路由默认
+    changeDefaultRoute() {
+      console.log(this.$router.path) 
     }
   }
 });
