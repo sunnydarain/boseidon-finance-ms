@@ -6,7 +6,7 @@
     el-row.logo(type="flex",justify="center",align="middle") 测试LOGO
     el-row
       el-col(:span="24")
-        el-menu(:router="true",:default-active="data.activerouter",@open="handleOpen",@close="handleClose",background-color="#545c64",text-color="#fff",active-text-color="#ffd04b")
+        el-menu(:router="true",:default-active="route.meta.pathCurrent",@open="handleOpen",@close="handleClose",background-color="#545c64",text-color="#fff",active-text-color="#ffd04b")
           template(v-for="(s,index) in menuArray" :key="index")
             template(v-if="s.children.length > 0")
               el-submenu(:index="s.index")
@@ -14,7 +14,7 @@
                   i.el-icon-location
                   span(v-text="s.name")
             template(v-else)
-              el-menu-item(:index="s.index" )
+              el-menu-item(:index="s.index",@click="changeDefaultRoute()")
                 i.el-icon-location
                 span(slot="title",v-text="s.name") 
   //- 右侧内容
@@ -45,6 +45,7 @@
 </template>
 
 <script lang="ts">
+// 
 import { defineComponent, reactive } from "vue";
 import { useRoute, useRouter } from 'vue-router'
 
@@ -77,13 +78,20 @@ export default defineComponent({
   name: "HomePage",
   components: {},
   setup() {
+    const router = useRouter()
+    const route = useRoute()
     menuArray;
     const data = reactive({
       isPersonShow: false,
       isToolShow: false,
       activerouter: '/main/home',
     });
-    return { data, menuArray };
+    // 点击切换路由默认
+    function changeDefaultRoute() {
+      console.log(router, '222')
+      console.log(route, '333')
+    }
+    return { data, menuArray ,changeDefaultRoute, route};
   },
   methods: {
     handleOpen(key: string, keyPath: string) {
@@ -100,10 +108,7 @@ export default defineComponent({
     showTools() {
       this.data.isToolShow = !this.data.isToolShow;
     },
-    // 点击切换路由默认
-    changeDefaultRoute() {
-      console.log(this.$router.path) 
-    }
+    
   }
 });
 </script>

@@ -17,11 +17,17 @@ const routes = [
         path: "/main/home",
         name: "home",
         component: () => import("../views/Main/Home"),
+        meta: {
+          pathCurrent: '/main/home'
+        }
       },
       {
         path: "/main/proof",
         name: "proof",
         component: () => import("../views/Main/Proof"),
+        meta: {
+          pathCurrent: '/main/proof'
+        }
       },
     ]
   },
