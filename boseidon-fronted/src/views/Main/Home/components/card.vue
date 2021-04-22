@@ -1,6 +1,6 @@
 <template lang="pug">
 .component-container
-    .card-container(v-for="(s,index) in cards",:key="index")
+    .card-container(v-for="(s,index) in cards",:key="index",@click="jump(index)")
         .content(v-text="s.name",:class="{'content_1':(index === 0),'content_2':(index === 1),'content_3':(index === 2),'content_4':(index === 3)}")
         .bottom(:style="{background: s.bottomColor}")
 </template>
@@ -30,7 +30,22 @@ export default defineComponent({
     const data = reactive({});
     return { data, cards };
   },
-  methods: {}
+  methods: {
+    jump(index: number) {
+      if (index === 0) {
+        alert("查看凭证");
+      }
+      if (index === 1) {
+        alert("科目余额表");
+      }
+      if (index === 2) {
+        alert("资产负债表");
+      }
+      if (index === 3) {
+        alert("利润表");
+      }
+    }
+  }
 });
 </script>
 
