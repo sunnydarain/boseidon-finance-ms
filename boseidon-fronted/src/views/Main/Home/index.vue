@@ -5,9 +5,10 @@
         .card-container
             Card
         .body-container
-            //- add
-            //- tab
-    
+            .add-container
+                Plus
+            .tab-container
+                Tabs
 </template>
 
 <script lang="ts">
@@ -17,6 +18,12 @@ export default defineComponent({
   components: {
     Card: defineAsyncComponent(() =>
       import("@/views/Main/Home/components/card.vue")
+    ),
+    Plus: defineAsyncComponent(() =>
+      import("@/views/Main/Home/components/plus.vue")
+    ),
+    Tabs: defineAsyncComponent(() =>
+      import("@/views/Main/Home/components/tablist.vue")
     )
   },
   setup() {
@@ -52,4 +59,15 @@ export default defineComponent({
             flex 1
             padding 0 20px 20px 20px
             box-sizing border-box
+            display flex
+            justify-content space-between
+            align-items center
+            .add-container
+                flex 1
+                height 100%
+                margin-right 10px
+            .tab-container
+                flex 1
+                height 100%
+                margin-left 10px
 </style>

@@ -1,7 +1,7 @@
 <template lang="pug">
 .component-container
     .card-container(v-for="(s,index) in cards",:key="index")
-        .content(v-text="s.name",:class="{'content_1':index === 0,'content_2':index === 1,'content_3':index === 2,'content_4':index === 3}")
+        .content(v-text="s.name",:class="{'content_1':(index === 0),'content_2':(index === 1),'content_3':(index === 2),'content_4':(index === 3)}")
         .bottom(:style="{background: s.bottomColor}")
 </template>
 
@@ -29,7 +29,8 @@ export default defineComponent({
     ];
     const data = reactive({});
     return { data, cards };
-  }
+  },
+  methods: {}
 });
 </script>
 
@@ -61,13 +62,17 @@ export default defineComponent({
             font-size 20px
             color #666
         .content_1:hover
-            background #20C89F
+            background rgba(32,200,159,0.4)
+            color #fff
         .content_2:hover
-            background #FF9548
+            background rgba(255,149,72,0.4)
+            color #fff
         .content_3:hover
-            background #F66562
+            background rgba(246,101,98,0.4)
+            color #fff
         .content_4:hover
-            background #1298F9
+            background rgba(18,152,249,0.4)
+            color #fff
         .bottom
             height 10px
 </style>
