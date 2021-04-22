@@ -45,9 +45,9 @@
 </template>
 
 <script lang="ts">
-// 
+//
 import { defineComponent, reactive } from "vue";
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from "vue-router";
 
 interface menuItem {
   name: string;
@@ -75,23 +75,23 @@ const menuArray: menuItem[] = [
 ];
 
 export default defineComponent({
-  name: "HomePage",
+  name: "MainPage",
   components: {},
   setup() {
-    const router = useRouter()
-    const route = useRoute()
+    const router = useRouter();
+    const route = useRoute();
     menuArray;
     const data = reactive({
       isPersonShow: false,
       isToolShow: false,
-      activerouter: '/main/home',
+      activerouter: "/main/home"
     });
     // 点击切换路由默认
     function changeDefaultRoute() {
-      console.log(router, '222')
-      console.log(route, '333')
+      console.log(router, "222");
+      console.log(route, "333");
     }
-    return { data, menuArray ,changeDefaultRoute, route};
+    return { data, menuArray, changeDefaultRoute, route };
   },
   methods: {
     handleOpen(key: string, keyPath: string) {
@@ -107,8 +107,7 @@ export default defineComponent({
     // 常用工具
     showTools() {
       this.data.isToolShow = !this.data.isToolShow;
-    },
-    
+    }
   }
 });
 </script>
@@ -117,6 +116,7 @@ export default defineComponent({
 .container
   width 100%
   height 100%
+  min-width 1300px
   display flex
   flex-direction row
   overflow hidden
@@ -165,4 +165,6 @@ export default defineComponent({
       width 100%
       flex 1
       background #f2f2f2
+      padding 20px
+      box-sizing border-box
 </style>

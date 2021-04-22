@@ -2,13 +2,10 @@
   <router-view />
 </template>
 
-<script>
-export default {
-  name: "app"
-};
-</script>
-
 <style>
+body {
+  cursor: url("./assets/common/mouse_arrow.png") auto;
+}
 #app {
   width: 100%;
   height: 100%;
