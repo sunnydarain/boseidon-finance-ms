@@ -40,7 +40,7 @@ export default defineComponent({
     display flex
     flex-direction row
     justify-content center
-    padding-top 100px
+    padding-top 20px
     box-sizing border-box
     .container
         width 1000px
