@@ -1,10 +1,17 @@
 <template lang="pug">
 .component-container
-  .component-row
-    el-button(v-for="(btn,index) in data.btnArray",type="primary",size="small",:key="index",:disabled="btn.status") {{btn.name}}
-    el-button(size="small") 
-      span 更多
-      i.el-icon-arrow-down.el-icon--right
+  .component-row-1
+    .row-item-1
+      el-button(v-for="(btn,index) in data.btnLeftArray",type="primary",size="small",:key="index",:disabled="btn.status") {{btn.name}}
+      el-button(size="small") 
+        span 更多
+        i.el-icon-arrow-down.el-icon--right
+    .row-item-2
+      el-button(size="medium",type="text") 快捷键
+      el-button(v-for="(btn,index) in data.btnRightArray",size="small",:key="index",:icon="btn.icon",:disabled="btn.status") 
+  .component-row-1
+    .row-item-1
+    .row-item-2
 </template>
 
 <script lang="ts">
@@ -20,12 +27,17 @@ export default defineComponent({
     }
   },
   setup() {
-    interface btnStatus {
+    interface btnLeftStatus {
       name: string;
       status: boolean;
       eventName: string;
     }
-    const btnArray: btnStatus[] = [
+    interface btnRightStatus {
+      icon: string;
+      status: boolean;
+      eventName: string;
+    }
+    const btnLeftArray: btnLeftStatus[] = [
       {
         name: "保存并新增",
         status: false,
@@ -42,7 +54,19 @@ export default defineComponent({
         eventName: ""
       }
     ];
-    const data = reactive({ btnArray });
+    const btnRightArray: btnRightStatus[] = [
+      {
+        icon: "el-icon-arrow-left",
+        status: false,
+        eventName: ""
+      },
+      {
+        icon: "el-icon-arrow-right",
+        status: true,
+        eventName: ""
+      }
+    ];
+    const data = reactive({ btnLeftArray, btnRightArray });
     return { data };
   },
   methods: {}
@@ -52,7 +76,7 @@ export default defineComponent({
 <style lang="stylus" scoped>
 .component-container
     width 1000px
-    max-height 526px
+    height auto
     display flex
     flex-direction column
     align-items center
@@ -60,7 +84,19 @@ export default defineComponent({
     border-radius 8px
     padding 16px
     box-sizing border-box
-    .component-row
+    .component-row-1
       width 100%
       height 30px
+      display flex
+      flex-direction space-between
+      .row-item-1
+        flex 1
+        display flex
+        flex-direction row
+        justify-content flex-start
+      .row-item-2
+        flex 1
+        display flex
+        flex-direction row
+        justify-content flex-end
 </style>

@@ -42,9 +42,8 @@ export default defineComponent({
         flex-shrink 0
     .form-content
         width 100%
-        flex 1
+        height auto
         flex-shrink 0
-        overflow-y auto
         display flex
         flex-direction row
         justify-content center
