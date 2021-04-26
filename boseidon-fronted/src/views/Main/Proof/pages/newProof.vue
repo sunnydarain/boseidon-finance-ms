@@ -3,7 +3,7 @@
     .form-header
         FormHeader(:title="'记账凭证'")
     .form-content
-        FormBody
+        FormBody(:form="data.form")
 
 </template>
 
@@ -20,7 +20,9 @@ export default defineComponent({
     )
   },
   setup() {
-    const data = reactive({});
+    const data = reactive({
+      form: {}
+    });
     return { data };
   }
 });
