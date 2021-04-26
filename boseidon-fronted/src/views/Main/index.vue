@@ -144,6 +144,7 @@ export default defineComponent({
     background rgb(84, 92, 100)
     color #ffffff
     overflow-y auto
+    overflow-x hidden
     /deep/ .el-menu
       border 0
     .logo
