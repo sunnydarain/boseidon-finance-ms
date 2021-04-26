@@ -10,7 +10,7 @@
           template(v-for="(s,index) in menuArray" :key="index")
             template(v-if="s.children.length > 0")
               el-submenu(:index="s.index")
-                template(slot="title")
+                template(#title)
                   i.el-icon-location
                   span(v-text="s.name")
                 el-menu-item-group
