@@ -39,6 +39,25 @@ const routes = [
             meta: {
               pathCurrent: "/main/proof/newProof"
             }
+          },
+          // 查看凭证
+          {
+            path: "/main/proof/watchProof",
+            name: "watchProof",
+            component: () => import("@/views/Main/Proof/pages/watchProof.vue"),
+            meta: {
+              pathCurrent: "/main/proof/watchProof"
+            }
+          },
+          // 会计电子档案
+          {
+            path: "/main/proof/accountElecArchives",
+            name: "accountElecArchives",
+            component: () =>
+              import("@/views/Main/Proof/pages/accountElecArchives.vue"),
+            meta: {
+              pathCurrent: "/main/proof/accountElecArchives"
+            }
           }
         ]
       }

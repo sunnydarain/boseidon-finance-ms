@@ -74,11 +74,11 @@ const menuArray: menuItem[] = [
       },
       {
         name: "查看凭证",
-        url: ""
+        url: "/main/proof/watchProof"
       },
       {
         name: "会计电子档案",
-        url: ""
+        url: "/main/proof/accountElecArchives"
       }
     ]
   },
