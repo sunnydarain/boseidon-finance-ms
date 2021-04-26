@@ -13,8 +13,10 @@
                 template(slot="title")
                   i.el-icon-location
                   span(v-text="s.name")
+                el-menu-item-group
+                  el-menu-item(v-for="m in s.children",:index="m.url",@click="changeDefaultRoute(String(m.url))") {{m.name}}
             template(v-else)
-              el-menu-item(:index="s.index",@click="changeDefaultRoute()")
+              el-menu-item(:index="s.index")
                 i.el-icon-location
                 span(slot="title",v-text="s.name") 
   //- 右侧内容
@@ -45,7 +47,6 @@
 </template>
 
 <script lang="ts">
-//
 import { defineComponent, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
@@ -62,7 +63,25 @@ interface childrenItem {
 
 const menuArray: menuItem[] = [
   { name: "首页", url: "/main/home", children: [], index: "/main/home" },
-  { name: "凭证", url: "/main/proof", children: [], index: "/main/proof" },
+  {
+    name: "凭证",
+    url: "/main/proof",
+    index: "/main/proof",
+    children: [
+      {
+        name: "新增凭证",
+        url: "/main/proof/newProof"
+      },
+      {
+        name: "查看凭证",
+        url: ""
+      },
+      {
+        name: "会计电子档案",
+        url: ""
+      }
+    ]
+  },
   { name: "资金", url: "03", children: [], index: "3" },
   { name: "发票", url: "04", children: [], index: "4" },
   { name: "工资", url: "05", children: [], index: "5" },
@@ -87,11 +106,10 @@ export default defineComponent({
       activerouter: "/main/home"
     });
     // 点击切换路由默认
-    function changeDefaultRoute() {
-      console.log(router, "222");
-      console.log(route, "333");
+    function changeDefaultRoute(path: string) {
+      console.log(path, "222");
     }
-    return { data, menuArray, changeDefaultRoute, route };
+    return { data, menuArray, changeDefaultRoute, route, router };
   },
   methods: {
     handleOpen(key: string, keyPath: string) {
