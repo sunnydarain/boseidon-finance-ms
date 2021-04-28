@@ -3,7 +3,7 @@
   .component-row-1
     .row-item-1
       el-button(v-for="(btn,index) in data.btnLeftArray",type="primary",size="small",:key="index",:disabled="btn.status") {{btn.name}}
-      el-button(size="small") 
+      el-button.more(size="small") 
         span 更多
         i.el-icon-arrow-down.el-icon--right
     .row-item-2
@@ -40,17 +40,17 @@ export default defineComponent({
     const btnLeftArray: btnLeftStatus[] = [
       {
         name: "保存并新增",
-        status: false,
+        status: true,
         eventName: ""
       },
       {
         name: "保存",
-        status: false,
+        status: true,
         eventName: ""
       },
       {
         name: "打印",
-        status: false,
+        status: true,
         eventName: ""
       }
     ];
@@ -94,6 +94,8 @@ export default defineComponent({
         display flex
         flex-direction row
         justify-content flex-start
+        // .more:hover
+
       .row-item-2
         flex 1
         display flex
